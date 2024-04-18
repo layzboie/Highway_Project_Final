@@ -1,5 +1,7 @@
 package Highway;
 
+import static Highway.Highway.allExits;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello World");
@@ -9,9 +11,9 @@ public class Main {
         int[]fails = new int[6];
         int failCount = 0;
         //creating some jobs
-        Car car0 = new Car();
-        Car car1 = new Car();
-        Car car2 = new Car();
+        Car car0 = new Car(allExits);
+        Car car1 = new Car(allExits);
+        Car car2 = new Car(allExits);
         //this creates the queue
         Queue queue = new Queue();
         //adds jobs to queue

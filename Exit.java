@@ -7,11 +7,14 @@ public class Exit {
 
     private Time timeOfExit;
 
+    private int ID;
+
     private double positionOfExit;
 
-    public Exit(String name, double positionOfExit) {
+    public Exit(String name, double positionOfExit, int ID) {
         this.nameOfExit = name;
         this.positionOfExit = positionOfExit;
+        this.ID = ID;
     }
 
     public String getNameOfExit() {
