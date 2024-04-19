@@ -2,6 +2,7 @@ package Highway;
 import java.util.ArrayList;
 
 public class Highway {
+    public static int maxSegments = 43;
     public static int maxExits = 43;
     public static int maxLanes = 3;
     private Lane[] lanes = new Lane[maxLanes - 1];//Need one less slot because 0 is an array slot.
@@ -15,6 +16,10 @@ public class Highway {
     // There are 40 exits, distance between each exit approx 2.296 miles; 91.85 (length of maryland i70) / # of exits 40 = 2.296 distance per exit
 
     public Highway(){
+        //Exits don't need an ID, as they are ordered by distance from starting point, so the array index works as an ID.
+
+
+
         allExits[0] = new Exit("Exit 1A",2.296, 0);
         allExits[1] = new Exit("Exit 3",4.592, 1);
         allExits[2] = new Exit("Exit 5",6.888, 2);

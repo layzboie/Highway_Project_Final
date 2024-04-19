@@ -3,7 +3,7 @@ package Highway;
 import java.util.List;
 import java.util.Queue;
 
-public class Lane {
+public class Lane extends Highway.Queue {
 
     int laneNumber;
 
@@ -15,5 +15,6 @@ public class Lane {
 
     public Lane(int laneNumber){
         this.laneNumber = laneNumber;
+
     }
 }

@@ -2,12 +2,15 @@ package Highway;
 
 import java.sql.Time;
 
+import static Highway.Highway.allExits;
+import static Highway.Highway.maxExits;
+
 public class Exit {
     private String nameOfExit;
 
     private Time timeOfExit;
 
-    private int ID;
+    private final int ID;
 
     private double positionOfExit;
 
@@ -32,5 +35,8 @@ public class Exit {
     public Time getTimeOfExit(){
         return timeOfExit;
     }
+    public double getPositionOfExit(){ return positionOfExit; }
+
+
 
 }

@@ -1,5 +1,9 @@
 package Highway;
 import java.util.Random;
+
+import static Highway.Highway.allExits;
+import static Highway.Highway.maxExits;
+
 //this class creates cars and gives them a unique number
 public class Car {
     static int carNumber = 0;
@@ -13,11 +17,19 @@ public class Car {
     public Car (Exit[] allExits){
         myNumber = carNumber++;
         myExit = allExits[randInt];
-
     }
 //this toString allows you to print the cars for testing
     @Override
     public String toString() {
         return "Car" + " " + myNumber;
+    }
+
+    public void findNewExit(double approximateExit){
+        for(int i = 0; i < maxExits; i++)
+            if(approximateExit > allExits[i].getPositionOfExit() - 1 && approximateExit < allExits[i].getPositionOfExit() + 1){
+                //If the approximateExit is within 1 mile of the exit at index "i".
+                //Only one exit can meet the "if" requirements.
+                this.myExit = allExits[i];
+            }
     }
 }
