@@ -24,12 +24,15 @@ public class Car {
         return "Car" + " " + myNumber;
     }
 
-    public void findNewExit(double approximateExit){
+    public Exit findNewExit(double approximateExit){
         for(int i = 0; i < maxExits; i++)
             if(approximateExit > allExits[i].getPositionOfExit() - 1 && approximateExit < allExits[i].getPositionOfExit() + 1){
                 //If the approximateExit is within 1 mile of the exit at index "i".
                 //Only one exit can meet the "if" requirements.
                 this.myExit = allExits[i];
+                return allExits[i];
             }
+        return null;
     }
+
 }

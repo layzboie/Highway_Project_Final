@@ -1,5 +1,4 @@
 package Highway;
-
 import static Highway.Highway.allExits;
 
 public class Road {
@@ -7,9 +6,15 @@ public class Road {
     Road nextRoad;
     private double startOfRoad;
     private double endOfRoad;
-    private Exit segmentExit;
+    private Exit roadExit;
     int totalCarCount;
+    public static int roadCount = 0;
+    int roadID;
     boolean doesRoadHaveMyExit;
+    public static int maxLanes = 3;
+    private Lane[] lanes = new Lane[maxLanes - 1];//Need one less slot because 0 is an array slot.
+
+
     Car carBeingTracked = new Car(allExits);
     NormalDistribution serviceTime = new NormalDistribution();
     // work on arrival process - if it generates x - add x many cars to lane
@@ -21,13 +26,18 @@ public class Road {
         }
     }
 
-    public Road(Exit segmentExit){
-        this.segmentExit = segmentExit;
+    public Road(Exit roodExit){
+        roadExit = roodExit;
+        roadID = roadCount;
+        roadCount++;
         //Roads/segments could be linked through "next" and "last" pointers.
         startOfRoad = lastRoad.endOfRoad;
-        endOfRoad = segmentExit.getPositionOfExit();
+        endOfRoad = roadExit.getPositionOfExit();
         //Road ends at the positionOfExit.
 
+        lanes[0] = new Lane(1);
+        lanes[1] = new Lane(2);
+        lanes[2] = new Lane(3);
     }
 
 }

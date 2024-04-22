@@ -2,11 +2,10 @@ package Highway;
 import java.util.ArrayList;
 
 public class Highway {
-    public static int maxSegments = 43;
     public static int maxExits = 43;
-    public static int maxLanes = 3;
-    private Lane[] lanes = new Lane[maxLanes - 1];//Need one less slot because 0 is an array slot.
+    public static int maxRoads = maxExits;
     public static Exit[] allExits = new Exit[maxExits - 1];//Need one less slot because 0 is an array slot.
+    public static Road[] allRoads = new Road[maxRoads - 1];
     final private double highwayLength = 91.85;
 
     // In many cases, a single ramp or interchange can serve both functions, allowing vehicles to both exit and enter the highway at the same location.
@@ -15,11 +14,27 @@ public class Highway {
 
     // There are 40 exits, distance between each exit approx 2.296 miles; 91.85 (length of maryland i70) / # of exits 40 = 2.296 distance per exit
 
+    public void makeRoads(){
+        for(int i = 0; i < maxRoads; i++){
+            //Special cases may be first and final roads/exits.
+            allRoads[i] = new Road(allExits[i]); //Makes a new road with an exit that fits the same distance.
+            if(i != 0) {//Special case to prevent errors while i == 0, A.K.A the first loop making the first road -- doesn't have lastRoad pointer.
+                allRoads[i].lastRoad = allRoads[i - 1];
+                allRoads[i - 1].nextRoad = allRoads[i];
+                //Assigns the lastRoad & nextRoad pointers retrospectively (after creating the new road).
+            }
+            if(i == maxRoads){
+                //The final road doesn't have a nextRoad, and no "unreachable point" or "forced exit" can currently be set, so its nextRoad is set to null.
+                allRoads[i].nextRoad = null;
+            }
+        }
+    }
     public Highway(){
         //Exits don't need an ID, as they are ordered by distance from starting point, so the array index works as an ID.
 
+        makeRoads();
 
-
+        //exits have to be created manually.
         allExits[0] = new Exit("Exit 1A",2.296, 0);
         allExits[1] = new Exit("Exit 3",4.592, 1);
         allExits[2] = new Exit("Exit 5",6.888, 2);
@@ -63,9 +78,6 @@ public class Highway {
         allExits[40] = new Exit("Exit 68",87.248, 40);
         allExits[41] = new Exit("Exit 91B-A",89.544, 41);
         allExits[42] = new Exit("Exit 94",91.85, 42);
-        lanes[0] = new Lane(1);
-        lanes[1] = new Lane(2);
-        lanes[2] = new Lane(3);
 
     }
 
