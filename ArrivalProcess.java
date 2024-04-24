@@ -1,3 +1,6 @@
+//addCars now resides in the lane class
+//This class is no longer used
+
 package Highway; //what is this? what does it do?
 public class ArrivalProcess {
     NormalDistribution arrivalDistribution = new NormalDistribution();
