@@ -38,6 +38,7 @@ public class Road {
         lanes[0] = new Lane(1);
         lanes[1] = new Lane(2);
         lanes[2] = new Lane(3);
+
     }
 
 }
