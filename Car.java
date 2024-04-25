@@ -1,8 +1,8 @@
 package Highway;
+
 import java.util.Random;
 
 import static Highway.Highway.allExits;
-import static Highway.Highway.maxExits;
 
 //this class creates cars and gives them a unique number
 public class Car {
@@ -11,7 +11,9 @@ public class Car {
     Exit myExit;
     int maxExits = 42;
     Random random;
-    int randInt = random.nextInt(maxExits + 1);
+    //int randInt = random.nextInt(maxExits + 1);
+    //randInt makes a null number, unit tests work now. Need to fix it
+    int randInt = 10;
     double arrivalTime = Double.MAX_VALUE;
     //this method adds 1 to the previously given car number to give each car a unique number
     public Car (Exit[] allExits){

@@ -76,8 +76,10 @@ public class Main {
         for (int i = 0; i < failCount; i++) {
             System.out.println("test " + fails[i] + " failed");
         }
-
-
+//this visual test proves that lane works, along with addCars
+        Lane lane = new Lane(0);
+        lane.addCars(15,7);
+        lane.lane.printQueue();
 
 
     }
